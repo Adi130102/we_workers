@@ -2,7 +2,7 @@
 
 Capstone Project on We Workers App that provides services like Home Cleaning, Electricals, Mechanicals, Plumbing and Many More. 
 
-"The project is done by a team consisting mainly of individuals: Aditya, Dhyey, Khushi, and Vishwa."
+The project is done by a team consisting mainly of individuals: Aditya, Dhyey, Khushi, and Vishwa.
 
 
 ## Getting Started
