@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'UserLogin.dart';
 
-import 'login.dart';
-
 void main() {
   const MaterialApp(
     home: UserRegistration(),
