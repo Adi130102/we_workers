@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'UserPayment.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import 'UserPayment.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -20,7 +21,6 @@ class _MyCartState extends State<MyCart> {
   int item = 1;
   int price = 4499;
   int total = 0;
-
   @override
   Widget build(BuildContext context) {
     total = item * price;
@@ -293,14 +293,15 @@ class _MyCartState extends State<MyCart> {
                     Container(
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return PaymentUser();
-                            },
-                          ));
+                          _launchURL();
+                          // Navigator.push(context, MaterialPageRoute(
+                          //   builder: (context) {
+                          //     return PaymentUser();
+                          //   },
+                          // ));
                         },
                         child: Text(
-                          "Place service",
+                          "Pay & Place service",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 17),
                         ),
@@ -317,5 +318,20 @@ class _MyCartState extends State<MyCart> {
         ),
       ),
     );
+  }
+}
+
+
+// Function to launch the URL
+void _launchURL() async {
+  const url = 'https://rzp.io/l/QI1sqUu';
+  try {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } catch (e) {
+    print('Error launching URL: $e');
   }
 }

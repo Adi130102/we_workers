@@ -23,14 +23,14 @@ class _categoriesState extends State<categories> {
 
   void _onItemTapped(int index) {
     if (index == 1) {
-      // If "Profile" tab is clicked
+      // If "My Cart" tab is clicked
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MyCart()),
       );
     }
     if (index == 2) {
-      // If "Profile" tab is clicked
+      // If "Notifications" tab is clicked
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => notifications()),
