@@ -3,6 +3,7 @@ import 'MyCart.dart';
 import 'UserNotifications.dart';
 import 'UserProfileAtHome.dart';
 import 'FullHomeCleaning.dart';
+import 'Home.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,31 +23,35 @@ class _categoriesState extends State<categories> {
   int selectedIndex = 0;
 
   void _onItemTapped(int index) {
+    selectedIndex = index;
     if (index == 1) {
       // If "My Cart" tab is clicked
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => MyCart()),
-      );
+      ).then((value) {setState(() {
+        selectedIndex = 0;
+      });});
     }
     if (index == 2) {
       // If "Notifications" tab is clicked
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => notifications()),
-      );
+      ).then((value) {setState(() {
+        selectedIndex = 0;
+      });});;
     }
     if (index == 3) {
       // If "Profile" tab is clicked
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => UserProfileAtHome()),
-      );
-    } else {
-      setState(() {
-        selectedIndex = index;
-      });
+      ).then((value) {setState(() {
+        selectedIndex = 0;
+      });});;
     }
+    setState(() {});
   }
 
   @override

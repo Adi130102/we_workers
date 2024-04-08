@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'UserPayment.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -325,13 +325,4 @@ class _MyCartState extends State<MyCart> {
 // Function to launch the URL
 void _launchURL() async {
   const url = 'https://rzp.io/l/QI1sqUu';
-  try {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  } catch (e) {
-    print('Error launching URL: $e');
-  }
 }

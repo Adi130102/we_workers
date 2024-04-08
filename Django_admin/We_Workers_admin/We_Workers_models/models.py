@@ -152,8 +152,8 @@ class BookingItem(models.Model):
     class Meta:
         unique_together = ['Booking_item_ID', 'Service_ID']  # Including unique_together in the Meta class ensures that the combination of booking_item_id and service together is unique in the database. This means that each BookingItem can only be associated with a unique service.
 
-    def __str__(self):
-        return f"Booking Item ID: {self.Booking_item_ID}"
+    # def __str__(self):
+    #     return f"Booking Item ID: {self.Booking_item_ID}"
 
 
 
@@ -163,8 +163,8 @@ class Scheduling(models.Model):
     Date = models.DateField()
     Time = models.TimeField()
 
-    def __str__(self):
-        return f"Scheduling ID: {self.Scheduling_ID}"
+    # def __str__(self):
+    #     return f"Scheduling ID: {self.Scheduling_ID}"
 
 
 
