@@ -1,5 +1,6 @@
 // import 'package:capestone_project/Category.dart';
 import 'package:flutter/material.dart';
+import 'package:we_workers/UserNotifications.dart';
 
 // import 'Category.dart';
 import 'Home.dart';
@@ -24,7 +25,11 @@ class _LocationState extends State<Location> {
       appBar: AppBar(
         backgroundColor: Color(0XFFedbea4),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
+          IconButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return notifications();
+            },));
+          }, icon: Icon(Icons.notifications)),
           IconButton(onPressed: () {}, icon: Icon(Icons.share)),
           IconButton(onPressed: () {}, icon: Icon(Icons.search)),
         ],
