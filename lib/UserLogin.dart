@@ -49,9 +49,9 @@ class _UserLoginState extends State<UserLogin> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
-                  label: Text('Name'),
+                  label: Text('Username'),
                   prefixIcon: Icon(Icons.people_alt_outlined),
-                  hintText: 'Enter your name:',
+                  hintText: 'Enter your Username:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),

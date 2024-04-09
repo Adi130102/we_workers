@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:we_workers/a_one.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -139,6 +140,22 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                           color: Colors.deepPurpleAccent,
                         ),
                         title: Text("About Us"),
+                        trailing: Icon(Icons.navigate_next),
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Trial(),
+                              ));
+                        },
+                        tileColor: Colors.grey[200],
+                        leading: Icon(
+                          Icons.api_outlined,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        title: Text("User API Trial"),
                         trailing: Icon(Icons.navigate_next),
                       ),
                       ListTile(
