@@ -25,7 +25,14 @@ from We_Workers_models import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('adiAPI/',views.AdityaApiView.as_view())
+    path('userAPI/',views.userApiView.as_view()),
+    path('technicianAPI/',views.TechnicianApiView.as_view()),
+    path('LocationAPI/',views.LocationApiView.as_view()),
+    path('Service_CategoryAPI/',views.Service_CategoryApiView.as_view()),
+    path('ServiceAPI/',views.ServiceApiView.as_view()),
+    path('BookingItemAPI/',views.BookingItemApiView.as_view()),
+    path('SchedulingAPI/',views.SchedulingApiView.as_view()),
+    path('Booking_infoAPI/',views.Booking_infoApiView.as_view()),
 ]
 
 

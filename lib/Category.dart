@@ -2,20 +2,33 @@ import 'package:flutter/material.dart';
 import 'HomePage.dart';
 
 void main() {
-  const MaterialApp(
-    home: Category(),
-    debugShowCheckedModeBanner: false,
-  );
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Category(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
 }
 
 class Category extends StatefulWidget {
-  const Category({super.key});
+  const Category({Key? key}) : super(key: key);
 
   @override
-  State<Category> createState() => _CategoryState();
+  _CategoryState createState() => _CategoryState();
 }
 
 class _CategoryState extends State<Category> {
+  final List<String> popularCategories = [
+    'Beautician',
+    'Electrician',
+    'Professional Cleaning',
+  ];
+
   final List<String> allCategories = [
     'Ac Repair & Service',
     'Bathroom Cleaning Subscription',
@@ -31,49 +44,74 @@ class _CategoryState extends State<Category> {
     'RO Water Purifier Repair'
   ];
 
+  List<String> selectedCategories = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              backgroundColor: Colors.grey,
-              child: Icon(Icons.person),
-            ),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
               children: [
-                Text('User Name', style: TextStyle(fontSize: 16)),
-                Text('GLS HAPPY', style: TextStyle(fontSize: 16)),
-                Text('STREET, LAW GARDEN', style: TextStyle(fontSize: 12)),
+                CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  child: Icon(Icons.location_on), // Location icon
+                ),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('GLS HAPPY',
+                        style: TextStyle(fontSize: 16)), // Display name
+                    Text('Street, Law Garden',
+                        style: TextStyle(fontSize: 12)), // Display address
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  child: Icon(Icons.person), // User icon
+                ),
+                SizedBox(width: 10),
+                Text('User Name',
+                    style: TextStyle(fontSize: 16)), // Display user name
               ],
             ),
           ],
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'What do you do?',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'What do you do?',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: SizedBox(
+              height: 40,
+              child: TextField(
+                style: TextStyle(fontSize: 14),
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(vertical: 8.0),
+                  hintText: 'Search...',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
@@ -87,33 +125,29 @@ class _CategoryState extends State<Category> {
               ),
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: allCategories.length + 1,
-              itemBuilder: (BuildContext context, int index) {
-                if (index == allCategories.length) {
-                  return DropdownButtonFormField<String>(
-                    items: allCategories.map((String category) {
-                      return DropdownMenuItem<String>(
-                        value: category,
-                        child: Text(category),
-                      );
-                    }).toList(),
-                    onChanged: (String? value) {},
-                  );
-                } else {
-                  String category = allCategories[index];
-                  return CheckboxListTile(
-                    title: Text(category),
-                    value: false,
-                    onChanged: (bool? value) {},
-                  );
-                }
-              },
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: popularCategories.map((category) {
+              return ListTile(
+                leading: _getIconForCategory(category),
+                title: Text(category),
+                trailing: Checkbox(
+                  value: selectedCategories.contains(category),
+                  onChanged: (bool? value) {
+                    setState(() {
+                      if (value ?? false) {
+                        selectedCategories.add(category);
+                      } else {
+                        selectedCategories.remove(category);
+                      }
+                    });
+                  },
+                ),
+              );
+            }).toList(),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 16.0),
+            padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 8.0),
             child: Text(
               'All Categories',
               style: TextStyle(
@@ -122,19 +156,54 @@ class _CategoryState extends State<Category> {
               ),
             ),
           ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: allCategories.length,
+              itemBuilder: (BuildContext context, int index) {
+                String category = allCategories[index];
+                return CheckboxListTile(
+                  title: Text(category),
+                  value: selectedCategories.contains(category),
+                  onChanged: (bool? value) {
+                    setState(() {
+                      if (value ?? false) {
+                        selectedCategories.add(category);
+                      } else {
+                        selectedCategories.remove(category);
+                      }
+                    });
+                  },
+                );
+              },
+            ),
+          ),
           Center(
             child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => HomePage(),
-                    ),
-                  );
-                },
-                child: Text("Proceed to Continue")),
-          )
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => HomePage(),
+                  ),
+                );
+              },
+              child: Text("Proceed to Continue"),
+            ),
+          ),
         ],
       ),
     );
+  }
+
+  Widget _getIconForCategory(String category) {
+    switch (category) {
+      case 'Beautician':
+        return Icon(Icons.face);
+      case 'Electrician':
+        return Icon(Icons.flash_on);
+      case 'Professional Cleaning':
+        return Icon(Icons.cleaning_services);
+      default:
+        return Icon(Icons.category);
+    }
   }
 }

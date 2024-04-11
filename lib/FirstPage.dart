@@ -3,20 +3,20 @@ import 'UserLogin.dart';
 import 'Registration.dart';
 
 void main() {
-  const MaterialApp(
-    home: FirstPage(),
-    debugShowCheckedModeBanner: false,
-  );
+  runApp(MyApp());
 }
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({super.key});
-
+class MyApp extends StatelessWidget {
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: FirstPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
 }
 
-class _FirstPageState extends State<FirstPage> {
+class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,80 +29,61 @@ class _FirstPageState extends State<FirstPage> {
         centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: 500.0,
-            height: 200.0,
-            child: Center(
-                child: Text(
-              'Technician',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  decorationColor: Colors.black,
-                  fontSize: 30.0),
-            )),
-            decoration: BoxDecoration(
-              color: Colors.pinkAccent.shade100,
-              shape: BoxShape.circle,
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          ElevatedButton.icon(
-              onPressed: () {
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (_) => Registration(),
                   ),
                 );
               },
-              icon: Icon(
-                Icons.pan_tool_alt_sharp,
-                color: Colors.blueAccent.shade400,
-              ),
-              label: Text(
-                "Technician",
-                style: TextStyle(color: Colors.blue.shade400),
-              )),
-          SizedBox(height: 20),
-          Container(
-              width: 500.0,
-              height: 200.0,
-              child: Center(
+              child: CircleAvatar(
+                backgroundColor: Colors.pinkAccent.shade100,
+                radius: 100,
+                child: Center(
                   child: Text(
-                'User',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30.0),
-              )),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade200,
-                shape: BoxShape.circle,
-              )),
-          SizedBox(
-            height: 10,
-          ),
-          ElevatedButton.icon(
-              onPressed: () {
+                    'Technician',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      decorationColor: Colors.black,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            InkWell(
+              onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (_) => UserLogin(),
                   ),
                 );
               },
-              icon: Icon(
-                Icons.person,
-                color: Colors.pinkAccent.shade400,
+              child: CircleAvatar(
+                backgroundColor: Colors.blue.shade200,
+                radius: 100,
+                child: Center(
+                  child: Text(
+                    'User',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
               ),
-              label: Text(
-                "User",
-                style: TextStyle(color: Colors.pinkAccent),
-              )),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

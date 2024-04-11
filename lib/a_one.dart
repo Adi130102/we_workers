@@ -28,7 +28,7 @@ class _TrialState extends State<Trial> {
         child: FutureBuilder<List<dynamic>>(
           future: useAPI.userALL(),
           builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-            print(snapshot.data);
+            // print(snapshot.data);
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {

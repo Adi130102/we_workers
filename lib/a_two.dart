@@ -26,7 +26,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class User {
-  String baseURL = "http://127.0.0.1:8000/adiAPI/";
+  // String baseURL = "http://127.0.0.1:8000/adiAPI/";
+  String baseURL = "https://awesomeworld1301.pythonanywhere.com/userAPI/";
+
+
   // String baseURL = "http://10.0.2.2:8000/adiAPI/";
 
   // String baseURL = "http://192.168.1.16:8000/adiAPI/";
