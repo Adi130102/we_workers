@@ -31,6 +31,9 @@ class Technician(models.Model):
 
     def is_service_active(self):
         return self.Technician_Service_Accept #False if the technician_service_accept is deactivate
+
+    def __str__(self):
+        return f"Technician Id and name: {self.Technician_Id} and {self.Technician_name}"
     
 
 
@@ -127,7 +130,7 @@ class Service_Category(models.Model):
     ServiceCategory_isActive = models.BooleanField(default=True)  # Assuming ServiceCategory_isActive is a boolean field
 
     def __str__(self):
-        return self.ServiceCategory_name
+        return f"ServiceCategory_name: {self.ServiceCategory_name}"
 
 
 class Service(models.Model):
@@ -139,7 +142,7 @@ class Service(models.Model):
     Service_isActive = models.BooleanField(default=True)  # Assuming Service_isActive is a boolean field is True
 
     def __str__(self):
-        return self.Service_type
+        return f"Service_type: {self.Service_type}"
 
 
 class BookingItem(models.Model):
@@ -152,8 +155,8 @@ class BookingItem(models.Model):
     class Meta:
         unique_together = ['Booking_item_ID', 'Service_ID']  # Including unique_together in the Meta class ensures that the combination of booking_item_id and service together is unique in the database. This means that each BookingItem can only be associated with a unique service.
 
-    # def __str__(self):
-    #     return f"Booking Item ID: {self.Booking_item_ID}"
+    def __str__(self):
+        return f"{self.Booking_item_ID}"
 
 
 
@@ -163,13 +166,14 @@ class Scheduling(models.Model):
     Date = models.DateField()
     Time = models.TimeField()
 
-    # def __str__(self):
-    #     return f"Scheduling ID: {self.Scheduling_ID}"
+    def __str__(self):
+        return f"Scheduling ID: {self.Scheduling_ID}"
 
 
 
 
 class Booking_info(models.Model):
     Booking_info_ID = models.AutoField(primary_key=True)
-    user_ID = models.ForeignKey('User', on_delete=models.CASCADE)  # Replace 'YourUserModel' with the actual user model in your project
+    user_ID = models.ForeignKey('User', on_delete=models.CASCADE)  
     booking_item = models.ForeignKey('BookingItem', on_delete=models.CASCADE)
+    

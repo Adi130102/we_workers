@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:we_workers/AllCategories.dart';
 import 'MyCart.dart';
 import 'UserNotifications.dart';
 import 'UserProfileAtHome.dart';
@@ -24,43 +25,42 @@ class _categoriesState extends State<categories> {
 
   void _onItemTapped(int index) {
     setState(() {
-    selectedIndex = index;
-    if (index == 1) {
-      // If "My Cart" tab is clicked
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MyCart()),
-      ).then((value) {
-        setState(() {
-          selectedIndex = 0;
+      selectedIndex = index;
+      if (index == 1) {
+        // If "My Cart" tab is clicked
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MyCart()),
+        ).then((value) {
+          setState(() {
+            selectedIndex = 0;
+          });
         });
-      });
-    }
-    if (index == 2) {
-      // If "Notifications" tab is clicked
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => notifications()),
-      ).then((value) {
-        setState(() {
-          selectedIndex = 0;
+      }
+      if (index == 2) {
+        // If "Notifications" tab is clicked
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => notifications()),
+        ).then((value) {
+          setState(() {
+            selectedIndex = 0;
+          });
         });
-      });
-      ;
-    }
-    if (index == 3) {
-      // If "Profile" tab is clicked
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => UserProfileAtHome()),
-      ).then((value) {
-        setState(() {
-          selectedIndex = 0;
+        ;
+      }
+      if (index == 3) {
+        // If "Profile" tab is clicked
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => UserProfileAtHome()),
+        ).then((value) {
+          setState(() {
+            selectedIndex = 0;
+          });
         });
-      });
-      ;
-    }
-
+        ;
+      }
     });
   }
 
@@ -228,523 +228,529 @@ class _categoriesState extends State<categories> {
                         children: [
                           GestureDetector(
                             onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CategoriesAll(),
+                                  ));
+
                               // print("Cleaning");
-                              showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      // height: 300,
-                                      width: double.maxFinite,
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Container(
-                                              child: Text(
-                                                "All Categories",
-                                                style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w800,
-                                                ),
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: Colors.grey[200],
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Bathroom Cleaning button pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/BathroomCategory.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Bathroom \nCleaning",
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Full Home Cleaning Category Pressed");
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          FullHomeCleaning()));
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/premiumthree.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Full Home\n Cleaning",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Sofa & Carpet Cleaning Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/SofaCategory.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Sofa & Carpet\n Cleaning",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Electric Wiring Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/Wiring.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Electric \nWiring",
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Electric Appliances Installation Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/ElectricInstallation.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Appliances\n Installation",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Electrical Repairing Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/Repairing.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Electrical\n Repairings",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Manual Cloth Washing button pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/ManualCleaning.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Manual Cloth\nCleaning",
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Machine Wash Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/MachineWashing.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Machine\n Wash",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Dry Cleanig Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/DryClean.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Dry\n Cleaning",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Plumbing Pipelines button pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/PlumbingPipelines.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Plumbing \nPipelines",
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Plumbing Installation Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/PlumbingInstallationw.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Plumbing\n Installation",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 20,
-                                                    ),
-                                                    Container(
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          print(
-                                                              "Plumbing Repairing Category Pressed");
-                                                        },
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              child:
-                                                                  Image.asset(
-                                                                "assets/PlubmingRepairs.jpg",
-                                                                height: 100,
-                                                                width: 100,
-                                                              ),
-                                                            ),
-                                                            Container(
-                                                              child: Text(
-                                                                "Plumbing\n Repairings",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 12,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  });
+                              // showModalBottomSheet(
+                              //     context: context,
+                              //     builder: (context) {
+                              //       return Container(
+                              //         // height: 300,
+                              //         width: double.maxFinite,
+                              //         child: SingleChildScrollView(
+                              //           child: Column(
+                              //             mainAxisAlignment:
+                              //                 MainAxisAlignment.spaceEvenly,
+                              //             children: [
+                              //               Container(
+                              //                 child: Text(
+                              //                   "All Categories",
+                              //                   style: TextStyle(
+                              //                     fontSize: 20,
+                              //                     fontWeight: FontWeight.w800,
+                              //                   ),
+                              //                 ),
+                              //                 decoration: BoxDecoration(
+                              //                   color: Colors.grey[200],
+                              //                   borderRadius:
+                              //                       BorderRadius.circular(15.0),
+                              //                 ),
+                              //               ),
+                              //               Container(
+                              //                 child: SingleChildScrollView(
+                              //                   scrollDirection:
+                              //                       Axis.horizontal,
+                              //                   child: Row(
+                              //                     mainAxisAlignment:
+                              //                         MainAxisAlignment.start,
+                              //                     children: [
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Bathroom Cleaning button pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/BathroomCategory.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Bathroom \nCleaning",
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Full Home Cleaning Category Pressed");
+                              //                             Navigator.push(
+                              //                                 context,
+                              //                                 MaterialPageRoute(
+                              //                                     builder:
+                              //                                         (context) =>
+                              //                                             FullHomeCleaning()));
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/premiumthree.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Full Home\n Cleaning",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Sofa & Carpet Cleaning Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/SofaCategory.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Sofa & Carpet\n Cleaning",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                     ],
+                              //                   ),
+                              //                 ),
+                              //               ),
+                              //               Container(
+                              //                 child: SingleChildScrollView(
+                              //                   scrollDirection:
+                              //                       Axis.horizontal,
+                              //                   child: Row(
+                              //                     mainAxisAlignment:
+                              //                         MainAxisAlignment.start,
+                              //                     children: [
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Electric Wiring Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/Wiring.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Electric \nWiring",
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Electric Appliances Installation Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/ElectricInstallation.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Appliances\n Installation",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Electrical Repairing Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/Repairing.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Electrical\n Repairings",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                     ],
+                              //                   ),
+                              //                 ),
+                              //               ),
+                              //               Container(
+                              //                 child: SingleChildScrollView(
+                              //                   scrollDirection:
+                              //                       Axis.horizontal,
+                              //                   child: Row(
+                              //                     mainAxisAlignment:
+                              //                         MainAxisAlignment.start,
+                              //                     children: [
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Manual Cloth Washing button pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/ManualCleaning.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Manual Cloth\nCleaning",
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Machine Wash Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/MachineWashing.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Machine\n Wash",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Dry Cleanig Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/DryClean.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Dry\n Cleaning",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                     ],
+                              //                   ),
+                              //                 ),
+                              //               ),
+                              //               Container(
+                              //                 child: SingleChildScrollView(
+                              //                   scrollDirection:
+                              //                       Axis.horizontal,
+                              //                   child: Row(
+                              //                     mainAxisAlignment:
+                              //                         MainAxisAlignment.start,
+                              //                     children: [
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Plumbing Pipelines button pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/PlumbingPipelines.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Plumbing \nPipelines",
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Plumbing Installation Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/PlumbingInstallationw.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Plumbing\n Installation",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                       SizedBox(
+                              //                         width: 20,
+                              //                       ),
+                              //                       Container(
+                              //                         child: GestureDetector(
+                              //                           onTap: () {
+                              //                             print(
+                              //                                 "Plumbing Repairing Category Pressed");
+                              //                           },
+                              //                           child: Column(
+                              //                             children: [
+                              //                               Container(
+                              //                                 child:
+                              //                                     Image.asset(
+                              //                                   "assets/PlubmingRepairs.jpg",
+                              //                                   height: 100,
+                              //                                   width: 100,
+                              //                                 ),
+                              //                               ),
+                              //                               Container(
+                              //                                 child: Text(
+                              //                                   "Plumbing\n Repairings",
+                              //                                   textAlign:
+                              //                                       TextAlign
+                              //                                           .center,
+                              //                                   style:
+                              //                                       TextStyle(
+                              //                                     fontSize: 12,
+                              //                                     fontWeight:
+                              //                                         FontWeight
+                              //                                             .w600,
+                              //                                   ),
+                              //                                 ),
+                              //                               )
+                              //                             ],
+                              //                           ),
+                              //                         ),
+                              //                       ),
+                              //                     ],
+                              //                   ),
+                              //                 ),
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         ),
+                              //       );
+                              //     });
                             },
                             child: Container(
                               child: Icon(
