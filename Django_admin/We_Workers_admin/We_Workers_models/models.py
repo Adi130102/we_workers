@@ -26,7 +26,8 @@ class Technician(models.Model):
     Technician_location=models.CharField(max_length=190)
     Technician_pincode=models.CharField(max_length=10)
     Technician_Password=models.CharField(max_length=100)
-    Technician_ID_Proof=models.CharField(max_length=150)
+    Technician_ID_Proof = models.FileField(upload_to='technician_id_proof/')  # Use FileField for generic file uploads
+    # Technician_ID_Proof=models.CharField(max_length=150)
     Technician_Service_Accept=models.BooleanField(default=True) #True if the technician_service_accept is Activate
 
     def is_service_active(self):

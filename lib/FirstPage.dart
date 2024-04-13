@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:we_workers/login.dart';
 import 'UserLogin.dart';
-import 'Registration.dart';
+// import 'Registration.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,7 +39,7 @@ class FirstPage extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (_) => Registration(),
+                    builder: (_) => TechnicianLogin(),
                   ),
                 );
               },
