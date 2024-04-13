@@ -1,123 +1,7 @@
-// import 'package:flutter/material.dart';
-// import 'UserLogin.dart';
-// import 'dart:convert';
-// import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-//
-// void main() {
-//   const MaterialApp(
-//     home: UserRegistration(),
-//     debugShowCheckedModeBanner: false,
-//   );
-// }
-//
-// class UserRegistration extends StatefulWidget {
-//   const UserRegistration({super.key});
-//
-//   @override
-//   State<UserRegistration> createState() => _UserRegistrationState();
-// }
-//
-// class _UserRegistrationState extends State<UserRegistration> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           'Registration',
-//           style: TextStyle(color: Colors.white),
-//         ),
-//         backgroundColor: Colors.blueGrey.shade400,
-//       ),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Center(
-//               child: Image(
-//                 image: AssetImage("assets/images/Registration.jpg"),
-//                 height: 200,
-//               ),
-//             ),
-//             SizedBox(
-//               height: 20,
-//             ),
-//             Container(
-//               child: Text('Welcome',
-//                   style:
-//                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   label: Text('Name'),
-//                   prefixIcon: Icon(Icons.people_alt_outlined),
-//                   hintText: 'Enter your name:',
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(20.0),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: TextField(
-//                 decoration: InputDecoration(
-//                   label: Text('Email'),
-//                   prefixIcon: Icon(Icons.email),
-//                   hintText: 'Enter your Email:',
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(20.0),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: TextField(
-//                 obscureText: true,
-//                 decoration: InputDecoration(
-//                   label: Text('Password'),
-//                   prefixIcon: Icon(Icons.password_sharp),
-//                   hintText: 'Enter your Password :',
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(20.0),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             ElevatedButton(
-//                 onPressed: () {
-//                   Navigator.of(context).push(
-//                     MaterialPageRoute(
-//                       builder: (_) => UserLogin(),
-//                     ),
-//                   );
-//                 },
-//                 child: Text(
-//                   'Sign up',
-//                   style: TextStyle(
-//                     fontWeight: FontWeight.bold,
-//                     color: Colors.black,
-//                     decorationColor: Colors.blueAccent.shade200,
-//                   ),
-//                 )),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'UserLogin.dart';
-import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 void main() {
   runApp(RegisterApp());
@@ -198,11 +82,11 @@ class _RegisterFormState extends State<RegisterForm> {
         _pincodeController.clear();
         _passwordController.clear();
         _confirmPasswordController.clear();
-        Navigator.push(context, MaterialPageRoute(builder: (context) => UserLogin()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => UserLogin()));
       } else {
         // Error occurred during registration
         print('Error: ${response.body}');
-        String specificerror = response.body;
         setState(() {
           _errorText = 'Registration failed. Please try again.';
           _firstNameController.clear();
@@ -268,7 +152,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _firstNameController,
                 decoration: InputDecoration(
                   labelText: 'First Name',
-                  prefixIcon: Icon(Icons.person,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your First Name:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -292,7 +179,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _lastNameController,
                 decoration: InputDecoration(
                   labelText: 'Last Name',
-                  prefixIcon: Icon(Icons.person,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your Last Name:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -316,7 +206,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  prefixIcon: Icon(Icons.email,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your email:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -340,7 +233,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _phoneController,
                 decoration: InputDecoration(
                   labelText: 'Phone',
-                  prefixIcon: Icon(Icons.phone,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.phone,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your Contact number:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -364,7 +260,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _locationsController,
                 decoration: InputDecoration(
                   labelText: 'Address',
-                  prefixIcon: Icon(Icons.location_city,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.location_city,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your Address:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -388,7 +287,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _pincodeController,
                 decoration: InputDecoration(
                   labelText: 'Pincode',
-                  prefixIcon: Icon(Icons.location_on,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.location_on,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your Pincode:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -412,7 +314,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  prefixIcon: Icon(Icons.password,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.password,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your Password:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -437,7 +342,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 controller: _confirmPasswordController,
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
-                  prefixIcon: Icon(Icons.password,color: Colors.deepPurple,),
+                  prefixIcon: Icon(
+                    Icons.password,
+                    color: Colors.deepPurple,
+                  ),
                   hintText: 'Enter your Password Again:',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
