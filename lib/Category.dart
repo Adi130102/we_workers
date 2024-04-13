@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:we_workers/GlobalClass.dart';
 import 'HomePage.dart';
 
 void main() {
@@ -63,9 +64,8 @@ class _CategoryState extends State<Category> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('GLS HAPPY',
-                        style: TextStyle(fontSize: 16)), // Display name
-                    Text('Street, Law Garden',
+                    // Display name
+                    Text(GlobalLocation.Address,
                         style: TextStyle(fontSize: 12)), // Display address
                   ],
                 ),
