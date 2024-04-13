@@ -148,7 +148,7 @@ class _UserLoginState extends State<UserLogin> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => UserRegistration(),
+                          builder: (context) => RegisterApp(),
                         ));
                   },
                   child: Container(
