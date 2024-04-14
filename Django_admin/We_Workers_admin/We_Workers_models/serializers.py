@@ -15,7 +15,7 @@ class TechnicianSerializer(serializers.ModelSerializer):
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ['location_ID','city_name','area_name','Pin_code','Latitude','Longitude','Is_active','Created_at','Updated_at']
+        fields = ['location_ID','area_name','Latitude','Longitude','Created_at','Updated_at']
 
 class Service_CategorySerializer(serializers.ModelSerializer):
     class Meta:

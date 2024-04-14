@@ -111,17 +111,17 @@ class Technician(models.Model):
 
 class Location(models.Model):
     location_ID = models.AutoField(primary_key=True)
-    city_name = models.CharField(max_length=100)  
-    area_name = models.CharField(max_length=100)  
-    Pin_code = models.CharField(max_length=20)  
+    # city_name = models.CharField(max_length=100)  
+    area_name = models.TextField()  
+    # Pin_code = models.CharField(max_length=20)  
     Latitude = models.FloatField()  
     Longitude = models.FloatField() 
-    Is_active = models.BooleanField(default=True)
+    # Is_active = models.BooleanField(default=True)
     Created_at = models.DateTimeField(auto_now_add=True)
     Updated_at = models.DateTimeField(auto_now=True)  
 
     def __str__(self):
-        return f"{self.city_name}, {self.area_name}"
+        return f"{self.area_name}, {self.area_name}"
 
 
 class Service_Category(models.Model):

@@ -17,7 +17,7 @@ from We_Workers_models.models import Booking_info
 # admin.site.register(User, UserAdmin)
 
 class User_registration_Admin(admin.ModelAdmin):
-    list_display=['user_ID','first_name','last_name','email','phone','locations','pincode','passwords','role']
+    list_display=['user_ID','first_name','last_name','email','phone','locations','pincode','role']
     list_display_links=['user_ID']
 
 admin.site.register(User,User_registration_Admin)
@@ -31,14 +31,14 @@ admin.site.register(User,User_registration_Admin)
 
 
 class Technician_Table_admin(admin.ModelAdmin):
-    list_display=['Technician_Id','Technician_name','Technician_email','Technician_phone','Technician_location','Technician_pincode','Technician_Password','Technician_ID_Proof','Technician_Service_Accept']
+    list_display=['Technician_Id','Technician_name','Technician_email','Technician_phone','Technician_location','Technician_pincode','Technician_ID_Proof','Technician_Service_Accept']
     list_display_links=['Technician_Id']
 
 admin.site.register(Technician,Technician_Table_admin)
 
 
 class Location_Table_admin(admin.ModelAdmin):
-    list_display=['location_ID','city_name','area_name','Pin_code','Latitude','Longitude','Is_active','Created_at','Updated_at']
+    list_display=['location_ID','area_name','Latitude','Longitude','Created_at','Updated_at']
     list_display_links=['location_ID']
 
 admin.site.register(Location,Location_Table_admin)
