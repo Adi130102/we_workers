@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:we_workers/Screens/SplashPage.dart';
-import 'User_Screens/FirstPage.dart';
-import 'User_Screens/SplashPage.dart';
-
+import 'FirstPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashPage(),
+      home: FirstPage(),
       debugShowCheckedModeBanner: false,
     );
   }
