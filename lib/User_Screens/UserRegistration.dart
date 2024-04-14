@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'UserLogin.dart';
+// import 'UserLogin.dart';
+import '../User_Screens/UserLogin.dart';
 
 void main() {
   runApp(RegisterApp());
@@ -26,7 +27,10 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registration'),
+        // title: Text('Registration'),
+        title: Text('User Registration Form',style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.blueGrey.shade400,
+
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
@@ -155,6 +159,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'First Name',
                   prefixIcon: Icon(
                     Icons.person,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your First Name:',
@@ -182,6 +187,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Last Name',
                   prefixIcon: Icon(
                     Icons.person,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your Last Name:',
@@ -209,6 +215,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Email',
                   prefixIcon: Icon(
                     Icons.email,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your email:',
@@ -236,6 +243,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Phone',
                   prefixIcon: Icon(
                     Icons.phone,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your Contact number:',
@@ -263,6 +271,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Address',
                   prefixIcon: Icon(
                     Icons.location_city,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your Address:',
@@ -290,6 +299,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Pincode',
                   prefixIcon: Icon(
                     Icons.location_on,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your Pincode:',
@@ -317,6 +327,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Password',
                   prefixIcon: Icon(
                     Icons.password,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your Password:',
@@ -345,6 +356,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   labelText: 'Confirm Password',
                   prefixIcon: Icon(
                     Icons.password,
+                    color: Colors.deepPurple,
 
                   ),
                   hintText: 'Enter your Password Again:',

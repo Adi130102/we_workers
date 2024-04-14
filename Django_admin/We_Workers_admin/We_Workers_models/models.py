@@ -26,7 +26,7 @@ class Technician(models.Model):
     Technician_location=models.CharField(max_length=190)
     Technician_pincode=models.CharField(max_length=10)
     Technician_Password=models.CharField(max_length=100)
-    Technician_ID_Proof = models.FileField(upload_to='technician_id_proof/')  # Use FileField for generic file uploads
+    Technician_ID_Proof = models.FileField(upload_to='technician_id_proof/',null=True)  # Use FileField for generic file uploads
     # Technician_ID_Proof=models.CharField(max_length=150)
     Technician_Service_Accept=models.BooleanField(default=True) #True if the technician_service_accept is Activate
 
@@ -111,12 +111,9 @@ class Technician(models.Model):
 
 class Location(models.Model):
     location_ID = models.AutoField(primary_key=True)
-    # city_name = models.CharField(max_length=100)  
-    area_name = models.TextField()  
-    # Pin_code = models.CharField(max_length=20)  
-    Latitude = models.FloatField()  
+    area_name = models.TextField()
+    Latitude = models.FloatField()
     Longitude = models.FloatField() 
-    # Is_active = models.BooleanField(default=True)
     Created_at = models.DateTimeField(auto_now_add=True)
     Updated_at = models.DateTimeField(auto_now=True)  
 
