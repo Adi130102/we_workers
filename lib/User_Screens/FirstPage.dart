@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:we_workers/Technician_Screens/login.dart';
+import 'package:we_workers/User_Screens/Home.dart';
 import '../Screens/UserLogin.dart';
 import 'UserLogin.dart';
 // import 'Registration.dart';
@@ -8,7 +10,12 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +25,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    calling_Session();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +65,22 @@ class FirstPage extends StatelessWidget {
 
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return UserLogin();
-                    },
-                  ));
+                  if ('SessionEmail' != null && 'SessionEmail'.isNotEmpty) {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        // setState(() {});
+                        return UserLogin();
+                      },
+                    ));
+                  } else {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        // setState(() {});
+                        return categories();
+                      },
+                    ));
+                  }
+                  setState(() {});
                 },
                 child: CircleAvatar(
                   radius: 100,
@@ -88,5 +118,12 @@ class FirstPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void calling_Session() async {
+    var sharedpref = await SharedPreferences.getInstance();
+    // setState(() {
+      sharedpref.getString('SessionEmail');
+    // });
   }
 }

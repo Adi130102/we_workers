@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'UserRegistration.dart';
 import 'UserLocation.dart';
 import 'package:http/http.dart' as http;
@@ -19,6 +20,7 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
+  static const String SessionEmail = "email";
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -35,7 +37,15 @@ class _UserLoginState extends State<UserLogin> {
             user['email'] == emailController.text &&
             user['passwords'] == passwordController.text);
 
+
         if (loggedIn) {
+          var pref= await SharedPreferences.getInstance();
+          pref.getString(SessionEmail);
+          print("Session success");
+          setState(() {
+
+          });
+          // session_success();
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (_) => Location(),
@@ -117,14 +127,22 @@ class _UserLoginState extends State<UserLogin> {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
+            ElevatedButton (
+              onPressed: () async{
+                var pref=await SharedPreferences.getInstance();
+                pref.setString(SessionEmail, emailController.text);
                 _login();
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (_) => Location(),
-                //   ),
-                // );
+                setState(() {
+
+                });
+                // Future.delayed(Duration(seconds: 2), ()
+                // {
+                //   Navigator.of(context).push(
+                //     MaterialPageRoute(
+                //       builder: (_) => Location(),
+                //     ),
+                //   );
+                // });
               },
               child: Text(
                 'Login',
