@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:we_workers/Technician_Screens/login.dart';
 import 'package:we_workers/User_Screens/Home.dart';
+import 'package:we_workers/User_Screens/UserLocation.dart';
 import '../Screens/UserLogin.dart';
-import 'UserLogin.dart';
+// import 'UserLogin.dart';
 // import 'Registration.dart';
+import 'package:we_workers/User_Screens/UserLogin.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+String? finalEmail;
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
@@ -35,9 +38,18 @@ class _FirstPageState extends State<FirstPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    calling_Session();
+    getSessionData();
   }
 
+  Future getSessionData() async{
+    final SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
+    var obtainedSessionMail=sharedPreferences.getString(SessionEmail);
+    setState(() {
+      finalEmail=obtainedSessionMail;
+    });
+    print(finalEmail);
+    print(obtainedSessionMail);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,18 +77,22 @@ class _FirstPageState extends State<FirstPage> {
 
               InkWell(
                 onTap: () {
-                  if ('SessionEmail' != null && 'SessionEmail'.isNotEmpty) {
+                  print("the first page is fine + $finalEmail");
+                  if (finalEmail != null && finalEmail!.isNotEmpty) {
+
+                    // if (SessionEmail != null && SessionEmail.isNotEmpty) {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         // setState(() {});
-                        return UserLogin();
+                        return Location();
+                        // return UserLogin();
                       },
                     ));
                   } else {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
                         // setState(() {});
-                        return categories();
+                        return UserLogin();
                       },
                     ));
                   }
@@ -120,10 +136,4 @@ class _FirstPageState extends State<FirstPage> {
     );
   }
 
-  void calling_Session() async {
-    var sharedpref = await SharedPreferences.getInstance();
-    // setState(() {
-      sharedpref.getString('SessionEmail');
-    // });
-  }
 }

@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:we_workers/User_Screens/FirstPage.dart';
 import 'UserRegistration.dart';
 import 'UserLocation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 void main() {
-  const MaterialApp(
+  runApp(MaterialApp(
     home: UserLogin(),
     debugShowCheckedModeBanner: false,
-  );
+  ));
 }
 
+// Define SessionEmail as a global static variable
+const String SessionEmail = "email";
+
 class UserLogin extends StatefulWidget {
-  const UserLogin({super.key});
+  const UserLogin({Key? key}) : super(key: key);
 
   @override
   State<UserLogin> createState() => _UserLoginState();
 }
 
 class _UserLoginState extends State<UserLogin> {
-  static const String SessionEmail = "email";
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -34,21 +37,22 @@ class _UserLoginState extends State<UserLogin> {
         List<dynamic> users = jsonDecode(response.body);
 
         bool loggedIn = users.any((user) =>
-            user['email'] == emailController.text &&
+        user['email'] == emailController.text &&
             user['passwords'] == passwordController.text);
 
-
         if (loggedIn) {
-          var pref= await SharedPreferences.getInstance();
+          var pref = await SharedPreferences.getInstance();
+          // Use SessionEmail here
           pref.getString(SessionEmail);
           print("Session success");
-          setState(() {
+          print(pref.getString(SessionEmail));
+          setState(() {});
 
-          });
           // session_success();
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => Location(),
+              builder: (_) => FirstPage(),
+              // builder: (_) => Location(),
             ),
           );
 
@@ -90,7 +94,7 @@ class _UserLoginState extends State<UserLogin> {
             Container(
               child: Text('Welcome',
                   style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
+                  TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -127,22 +131,13 @@ class _UserLoginState extends State<UserLogin> {
                 ),
               ),
             ),
-            ElevatedButton (
-              onPressed: () async{
-                var pref=await SharedPreferences.getInstance();
-                pref.setString(SessionEmail, emailController.text);
+            ElevatedButton(
+              onPressed: () async {
+                final SharedPreferences pref =
+                await SharedPreferences.getInstance();
+                pref.setString('email', emailController.text);
                 _login();
-                setState(() {
-
-                });
-                // Future.delayed(Duration(seconds: 2), ()
-                // {
-                //   Navigator.of(context).push(
-                //     MaterialPageRoute(
-                //       builder: (_) => Location(),
-                //     ),
-                //   );
-                // });
+                setState(() {});
               },
               child: Text(
                 'Login',
