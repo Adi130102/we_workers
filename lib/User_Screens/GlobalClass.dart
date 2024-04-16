@@ -3,4 +3,5 @@ class GlobalLocation {
   static String Address = 'search';
   static String latitude = '0';
   static String longitude = '0';
+  static List<dynamic> AdityacartItems = [];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:we_workers/User_Screens/AllServices.dart';
+import 'package:we_workers/User_Screens/CartPage.dart';
 import 'GlobalClass.dart';
 import 'MyCart.dart';
 import '../Screens/UserNotifications.dart';
@@ -34,7 +35,7 @@ class _categoriesState extends State<categories> {
         // If "My Cart" tab is clicked
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MyCart()),
+          MaterialPageRoute(builder: (context) => CartPage(cartItems: GlobalLocation.AdityacartItems)),
         ).then((value) {
           setState(() {
             selectedIndex = 0;

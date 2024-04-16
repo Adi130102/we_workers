@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:we_workers/User_Screens/HelpSupport.dart';
+import 'package:we_workers/User_Screens/Logout.dart';
 import 'package:we_workers/User_Screens/a_one.dart';
 
 void main() {
@@ -123,7 +125,13 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         trailing: Icon(Icons.navigate_next),
                       ),
                       ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HelpSupportPage(),
+                              ));
+                        },
                         tileColor: Colors.grey[200],
                         leading: Icon(
                           Icons.headset_mic_outlined,
@@ -159,7 +167,13 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         trailing: Icon(Icons.navigate_next),
                       ),
                       ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LogoutPage(),
+                              ));
+                        },
                         tileColor: Colors.grey[200],
                         leading: Icon(
                           Icons.logout_outlined,

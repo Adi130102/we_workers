@@ -25,152 +25,122 @@ class _PaymentUserState extends State<PaymentUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              width: 1450,
-              height: 75,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: Colors.grey),
-                color: Colors.grey.shade50,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-                child: Text(
-                  'Payment',
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                width: 1450,
+                height: 75,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey),
+                  color: Colors.grey.shade50,
                 ),
-              ),
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 450,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(
-                          color: Colors.grey,
-                        ),
-                        color: Colors.blueGrey.shade50),
-                    child: Column(children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
-                            child: Text(
-                              'Payment Options:',
-                              style: TextStyle(
-                                  fontSize: 17, fontWeight: FontWeight.w700),
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 15, 0, 0),
-                        child: Column(
-                          children: [
-                            Container(
-                              child: CheckboxListTile(
-                                value: pay,
-                                onChanged: (value) {
-                                  print(value);
-                                  pay = value!;
-                                  setState(() {});
-                                },
-                                activeColor: Colors.blueGrey,
-                                title: Text("Paytm"),
-                              ),
-                            ),
-                            Container(
-                              child: CheckboxListTile(
-                                value: Gpa,
-                                onChanged: (value) {
-                                  print(value);
-                                  Gpa = value!;
-                                  setState(() {});
-                                },
-                                activeColor: Colors.blueGrey,
-                                title: Text("Gpay"),
-                              ),
-                            ),
-                            Container(
-                              child: CheckboxListTile(
-                                value: Wal,
-                                onChanged: (value) {
-                                  print(value);
-                                  Wal = value!;
-                                  setState(() {});
-                                },
-                                activeColor: Colors.blueGrey,
-                                title: Text("Wallet"),
-                              ),
-                            ),
-                            Container(
-                              child: CheckboxListTile(
-                                value: cre,
-                                onChanged: (value) {
-                                  print(value);
-                                  cre = value!;
-                                  setState(() {});
-                                },
-                                activeColor: Colors.blueGrey,
-                                title: Text("Credit/Debit Card"),
-                              ),
-                            ),
-                            Container(
-                              child: CheckboxListTile(
-                                value: Net,
-                                onChanged: (value) {
-                                  print(value);
-                                  Net = value!;
-                                  setState(() {});
-                                },
-                                activeColor: Colors.blueGrey,
-                                title: Text("Net Baking"),
-                              ),
-                            ),
-                            Container(
-                              child: CheckboxListTile(
-                                value: cash,
-                                onChanged: (value) {
-                                  print(value);
-                                  cash = value!;
-                                  setState(() {});
-                                },
-                                activeColor: Colors.blueGrey,
-                                title: Text("Cash"),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+                  child: Text(
+                    'Payment',
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 264, 0, 0),
-                  child: SizedBox(
-                    width: 1450,
-                    child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Continue',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.blueGrey),
-                        )),
+              ),
+              SizedBox(height: 15),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey),
+                  color: Colors.blueGrey.shade50,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Payment Options:',
+                        style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(height: 15),
+                      CheckboxListTile(
+                        value: pay,
+                        onChanged: (value) {
+                          setState(() {
+                            pay = value!;
+                          });
+                        },
+                        activeColor: Colors.blueGrey,
+                        title: Text("Paytm"),
+                      ),
+                      CheckboxListTile(
+                        value: Gpa,
+                        onChanged: (value) {
+                          setState(() {
+                            Gpa = value!;
+                          });
+                        },
+                        activeColor: Colors.blueGrey,
+                        title: Text("Gpay"),
+                      ),
+                      CheckboxListTile(
+                        value: Wal,
+                        onChanged: (value) {
+                          setState(() {
+                            Wal = value!;
+                          });
+                        },
+                        activeColor: Colors.blueGrey,
+                        title: Text("Wallet"),
+                      ),
+                      CheckboxListTile(
+                        value: cre,
+                        onChanged: (value) {
+                          setState(() {
+                            cre = value!;
+                          });
+                        },
+                        activeColor: Colors.blueGrey,
+                        title: Text("Credit/Debit Card"),
+                      ),
+                      CheckboxListTile(
+                        value: Net,
+                        onChanged: (value) {
+                          setState(() {
+                            Net = value!;
+                          });
+                        },
+                        activeColor: Colors.blueGrey,
+                        title: Text("Net Banking"),
+                      ),
+                      CheckboxListTile(
+                        value: cash,
+                        onChanged: (value) {
+                          setState(() {
+                            cash = value!;
+                          });
+                        },
+                        activeColor: Colors.blueGrey,
+                        title: Text("Cash"),
+                      ),
+                    ],
                   ),
-                )
-              ],
-            )
-          ],
+                ),
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+                width: 1450,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.blueGrey),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
