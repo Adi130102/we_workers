@@ -102,12 +102,12 @@ class _categoriesState extends State<categories> {
                 Container(
                   child: Row(
                     children: [
-                      Icon(Icons.location_on_outlined,size: 40,),
+                      Icon(Icons.location_on_outlined,size: 40,color: Colors.deepPurple,),
                       SizedBox(width: 10,),
                       Flexible(
                         child: Text( GlobalLocation.Address,
                             style:
-                            TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                            TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.deepPurple)),
                       ),
                     ],
                   ),

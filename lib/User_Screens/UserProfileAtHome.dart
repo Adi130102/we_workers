@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:we_workers/User_Screens/Aboutus.dart';
 import 'package:we_workers/User_Screens/HelpSupport.dart';
 import 'package:we_workers/User_Screens/Logout.dart';
 import 'package:we_workers/User_Screens/a_one.dart';
@@ -48,13 +49,13 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Aditya Patel",
+                            "We Workers",
                             style: TextStyle(
                               fontSize: 20,
                             ),
                           ),
-                          Text("pateladitya130102@gmail.com"),
-                          Text("9427178733")
+                          Text(""),
+                          Text("We serve better!!")
                         ],
                       ),
                     ),
@@ -84,46 +85,20 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                     children: [
                       ListTile(
                         onTap: () {
-                          setState(() {});
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+
+                            return AboutUsPage();
+                          },));
                         },
                         tileColor: Colors.grey[200],
                         leading: Icon(
-                          Icons.edit_outlined,
+                          Icons.webhook_outlined,
                           color: Colors.deepPurpleAccent,
                         ),
-                        title: Text("Edit Profile"),
+                        title: Text("About Us"),
                         trailing: Icon(Icons.navigate_next),
                       ),
-                      ListTile(
-                        onTap: () {},
-                        tileColor: Colors.grey[200],
-                        leading: Icon(
-                          Icons.event_note_outlined,
-                          color: Colors.deepPurpleAccent,
-                        ),
-                        title: Text("My bookings"),
-                        trailing: Icon(Icons.navigate_next),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        tileColor: Colors.grey[200],
-                        leading: Icon(
-                          Icons.schedule_outlined,
-                          color: Colors.deepPurpleAccent,
-                        ),
-                        title: Text("Scheduled bookings"),
-                        trailing: Icon(Icons.navigate_next),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        tileColor: Colors.grey[200],
-                        leading: Icon(
-                          Icons.star_border_outlined,
-                          color: Colors.deepPurpleAccent,
-                        ),
-                        title: Text("Edit Premium Membership"),
-                        trailing: Icon(Icons.navigate_next),
-                      ),
+
                       ListTile(
                         onTap: () {
                           Navigator.push(
@@ -140,16 +115,7 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         title: Text("Help Center"),
                         trailing: Icon(Icons.navigate_next),
                       ),
-                      ListTile(
-                        onTap: () {},
-                        tileColor: Colors.grey[200],
-                        leading: Icon(
-                          Icons.webhook_outlined,
-                          color: Colors.deepPurpleAccent,
-                        ),
-                        title: Text("About Us"),
-                        trailing: Icon(Icons.navigate_next),
-                      ),
+
                       ListTile(
                         onTap: () {
                           Navigator.push(

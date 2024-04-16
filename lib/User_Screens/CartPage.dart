@@ -18,7 +18,7 @@ class _CartPageState extends State<CartPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: Text('Cart',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.deepPurple,
       ),
       body: Column(

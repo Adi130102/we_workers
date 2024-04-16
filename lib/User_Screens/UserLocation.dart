@@ -79,51 +79,51 @@ class _LocationState extends State<Location> {
           IconButton(onPressed: () {}, icon: Icon(Icons.search)),
         ],
       ),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
-                decoration: BoxDecoration(color: Colors.grey[200]),
-                width: double.maxFinite,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Aditya Patel",
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
-                          Text("pateladitya130102@gmail.com"),
-                          Text("9427178733")
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100.0),
-                        child: Image.asset(
-                          "assets/Adi1.jpg",
-                          height: 70,
-                          width: 70,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      // drawer: Drawer(
+      //   child: SafeArea(
+      //     child: Column(
+      //       children: [
+      //         Container(
+      //           padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+      //           decoration: BoxDecoration(color: Colors.grey[200]),
+      //           width: double.maxFinite,
+      //           child: Row(
+      //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //             children: [
+      //               Container(
+      //                 child: Column(
+      //                   mainAxisAlignment: MainAxisAlignment.start,
+      //                   crossAxisAlignment: CrossAxisAlignment.start,
+      //                   children: [
+      //                     Text(
+      //                       "Aditya Patel",
+      //                       style: TextStyle(
+      //                         fontSize: 20,
+      //                       ),
+      //                     ),
+      //                     Text("pateladitya130102@gmail.com"),
+      //                     Text("9427178733")
+      //                   ],
+      //                 ),
+      //               ),
+      //               Container(
+      //                 child: ClipRRect(
+      //                   borderRadius: BorderRadius.circular(100.0),
+      //                   child: Image.asset(
+      //                     "assets/Adi1.jpg",
+      //                     height: 70,
+      //                     width: 70,
+      //                     fit: BoxFit.cover,
+      //                   ),
+      //                 ),
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -146,56 +146,58 @@ class _LocationState extends State<Location> {
               width: 500,
               height: 253,
               color: Colors.blue.shade200,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Where do you want your service?',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Where do you want your service?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
 
-                  Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10,),
-                  Text(GlobalLocation.location,style: TextStyle(color: Colors.black,fontSize: 16),),
-                  SizedBox(height: 10,),
-                  Text('ADDRESS',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10,),
-                  Text('${GlobalLocation.Address}'),
-                  ElevatedButton(onPressed: () async{
-                    Position position = await _getGeoLocationPosition();
-                    GlobalLocation.location ='Lat: ${position.latitude} , Long: ${position.longitude}';
-                    GetAddressFromLatLong(position);
+                    Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                    SizedBox(height: 10,),
+                    Text(GlobalLocation.location,style: TextStyle(color: Colors.black,fontSize: 16),),
+                    SizedBox(height: 10,),
+                    Text('ADDRESS',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                    SizedBox(height: 10,),
+                    Text('${GlobalLocation.Address}'),
+                    ElevatedButton(onPressed: () async{
+                      Position position = await _getGeoLocationPosition();
+                      GlobalLocation.location ='Lat: ${position.latitude} , Long: ${position.longitude}';
+                      GetAddressFromLatLong(position);
 
-                    Timer(Duration(milliseconds: 2500), () {
+                      Timer(Duration(milliseconds: 2500), () {
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
 
-                        return categories();
-                      },));
+                          return categories();
+                        },));
 
-                    });
-                  }, child: Text('Get Location'),
-                  ),
+                      });
+                    }, child: Text('Get Location'),
+                    ),
 
 
-                  SizedBox(height: 20,),
+                    SizedBox(height: 20,),
 
-                  // ElevatedButton(
-                  //     onPressed: () {
-                  //       Navigator.of(context).push(
-                  //         MaterialPageRoute(
-                  //           builder: (_) => categories(),
-                  //         ),
-                  //       );
-                  //     },
-                  //     child: Text(
-                  //       'I will enter my location manually',
-                  //       style: TextStyle(
-                  //           fontWeight: FontWeight.bold, color: Colors.black),
-                  //     ))
-                ],
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       Navigator.of(context).push(
+                    //         MaterialPageRoute(
+                    //           builder: (_) => categories(),
+                    //         ),
+                    //       );
+                    //     },
+                    //     child: Text(
+                    //       'I will enter my location manually',
+                    //       style: TextStyle(
+                    //           fontWeight: FontWeight.bold, color: Colors.black),
+                    //     ))
+                  ],
+                ),
               ),
             )
           ],

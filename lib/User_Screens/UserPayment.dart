@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'Cash.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,12 +17,7 @@ class PaymentUser extends StatefulWidget {
 }
 
 class _PaymentUserState extends State<PaymentUser> {
-  bool pay = false;
-  bool Gpa = false;
-  bool Wal = false;
-  bool cre = false;
-  bool Net = false;
-  bool cash = false;
+  String? selectedPaymentOption;
 
   @override
   Widget build(BuildContext context) {
@@ -64,66 +61,67 @@ class _PaymentUserState extends State<PaymentUser> {
                         style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
                       ),
                       SizedBox(height: 15),
-                      CheckboxListTile(
-                        value: pay,
-                        onChanged: (value) {
-                          setState(() {
-                            pay = value!;
-                          });
-                        },
-                        activeColor: Colors.blueGrey,
+                      RadioListTile(
                         title: Text("Paytm"),
-                      ),
-                      CheckboxListTile(
-                        value: Gpa,
+                        value: "Paytm",
+                        groupValue: selectedPaymentOption,
                         onChanged: (value) {
                           setState(() {
-                            Gpa = value!;
+                            selectedPaymentOption = value as String?;
                           });
                         },
-                        activeColor: Colors.blueGrey,
+                      ),
+                      RadioListTile(
                         title: Text("Gpay"),
-                      ),
-                      CheckboxListTile(
-                        value: Wal,
+                        value: "Gpay",
+                        groupValue: selectedPaymentOption,
                         onChanged: (value) {
                           setState(() {
-                            Wal = value!;
+                            selectedPaymentOption = value as String?;
                           });
                         },
-                        activeColor: Colors.blueGrey,
+                      ),
+                      RadioListTile(
                         title: Text("Wallet"),
-                      ),
-                      CheckboxListTile(
-                        value: cre,
+                        value: "Wallet",
+                        groupValue: selectedPaymentOption,
                         onChanged: (value) {
                           setState(() {
-                            cre = value!;
+                            selectedPaymentOption = value as String?;
                           });
                         },
-                        activeColor: Colors.blueGrey,
-                        title: Text("Credit/Debit Card"),
                       ),
-                      CheckboxListTile(
-                        value: Net,
+                      RadioListTile(
+                        title: Text("Card"),
+                        value: "Card",
+                        groupValue: selectedPaymentOption,
                         onChanged: (value) {
                           setState(() {
-                            Net = value!;
+                            selectedPaymentOption = value as String?;
                           });
                         },
-                        activeColor: Colors.blueGrey,
+                      ),
+                      RadioListTile(
                         title: Text("Net Banking"),
-                      ),
-                      CheckboxListTile(
-                        value: cash,
+                        value: "Net Banking",
+                        groupValue: selectedPaymentOption,
                         onChanged: (value) {
                           setState(() {
-                            cash = value!;
+                            selectedPaymentOption = value as String?;
                           });
                         },
-                        activeColor: Colors.blueGrey,
-                        title: Text("Cash"),
                       ),
+                      RadioListTile(
+                        title: Text("Cash"),
+                        value: "Cash",
+                        groupValue: selectedPaymentOption,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedPaymentOption = value as String?;
+                          });
+                        },
+                      ),
+
                     ],
                   ),
                 ),
@@ -132,7 +130,27 @@ class _PaymentUserState extends State<PaymentUser> {
               SizedBox(
                 width: 1450,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Redirect based on the selected payment option
+                    if (selectedPaymentOption == "Paytm") {
+                      launch('https://rzp.io/l/QI1sqUu');
+                    } else if (selectedPaymentOption == "Gpay") {
+                      launch('https://rzp.io/l/QI1sqUu');
+                    } else if (selectedPaymentOption == "Wallet"){
+                      launch('https://rzp.io/l/QI1sqUu');
+                    }else if (selectedPaymentOption == "Card"){
+                      launch('https://rzp.io/l/QI1sqUu');
+                    }else if (selectedPaymentOption == "Net Banking"){
+                      launch('https://rzp.io/l/QI1sqUu');
+                    }
+                    else{
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return CashPaymentConfirmation();
+                      },));
+                    }
+
+                    // Add more conditions for other payment options if needed
+                  },
                   child: Text(
                     'Continue',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.blueGrey),
