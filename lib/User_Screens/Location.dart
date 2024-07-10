@@ -1,13 +1,14 @@
 // import 'package:capestone_project/Category.dart';
-import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:we_workers/User_Screens/GlobalClass.dart';
-import 'Category.dart';
-import 'package:http/http.dart' as http;
-
+import 'package:we_workers/UserNotifications.dart';
+import 'package:we_workers/User_Screens/UserHome.dart';
+import 'GlobalClass.dart';
+import 'UserHome.dart';
+import 'UserNotifications.dart';
 
 void main() {
   const MaterialApp(
@@ -23,38 +24,6 @@ class Location extends StatefulWidget {
 }
 
 class _LocationState extends State<Location> {
-  Future<void> sendLocationData(String location) async {
-    try {
-      final response = await http.post(
-        Uri.parse('https://awesomeworld1301.pythonanywhere.com/locationApiGet/'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, dynamic>{
-          'city_name': GlobalLocation.location,
-          'area_name':  GlobalLocation.Address,
-          'Pin_code': Placemark(postalCode: '38004'),
-          'Latitude': 23.051474,
-          'Longitude': 72.211944,
-          'Is_active': true
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        print('Location data sent successfully');
-        // Optionally, you can handle further actions after successful data transmission
-      } else {
-        print('Failed to send location data. Error: ${response.statusCode}');
-        // Optionally, you can handle errors here
-      }
-    } catch (e) {
-      print('Error sending location data: $e');
-      // Optionally, you can handle errors here
-    }
-  }
-
-
-
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -94,31 +63,70 @@ class _LocationState extends State<Location> {
     setState(()  {
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        backgroundColor: Color(0XFFedbea4),
         actions: [
-          Icon(Icons.menu),
-          SizedBox(
-            width: 350,
-          ),
-          // Icon(Icons.notification_important),
-          // SizedBox(
-          //   width: 10,
-          // ),
-          Icon(Icons.share),
-          SizedBox(
-            width: 20,
-          ),
-          Icon(Icons.search),
+          IconButton(onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return notifications();
+            },));
+          }, icon: Icon(Icons.notifications)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
         ],
       ),
+      // drawer: Drawer(
+      //   child: SafeArea(
+      //     child: Column(
+      //       children: [
+      //         Container(
+      //           padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+      //           decoration: BoxDecoration(color: Colors.grey[200]),
+      //           width: double.maxFinite,
+      //           child: Row(
+      //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //             children: [
+      //               Container(
+      //                 child: Column(
+      //                   mainAxisAlignment: MainAxisAlignment.start,
+      //                   crossAxisAlignment: CrossAxisAlignment.start,
+      //                   children: [
+      //                     Text(
+      //                       "Aditya Patel",
+      //                       style: TextStyle(
+      //                         fontSize: 20,
+      //                       ),
+      //                     ),
+      //                     Text("pateladitya130102@gmail.com"),
+      //                     Text("9427178733")
+      //                   ],
+      //                 ),
+      //               ),
+      //               Container(
+      //                 child: ClipRRect(
+      //                   borderRadius: BorderRadius.circular(100.0),
+      //                   child: Image.asset(
+      //                     "assets/Adi1.jpg",
+      //                     height: 70,
+      //                     width: 70,
+      //                     fit: BoxFit.cover,
+      //                   ),
+      //                 ),
+      //               ),
+      //             ],
+      //           ),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 15),
             Image(
               width: 470,
               image: AssetImage("assets/images/Location.jpg"),
@@ -137,57 +145,59 @@ class _LocationState extends State<Location> {
               width: 500,
               height: 253,
               color: Colors.blue.shade200,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Where do you want your service?',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Where do you want your service?',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
+
+                    Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                    SizedBox(height: 10,),
+                    Text(GlobalLocation.location,style: TextStyle(color: Colors.black,fontSize: 16),),
+                    SizedBox(height: 10,),
+                    Text('ADDRESS',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
+                    SizedBox(height: 10,),
+                    Text('${GlobalLocation.Address}'),
+                    ElevatedButton(onPressed: () async{
+                      Position position = await _getGeoLocationPosition();
+                      GlobalLocation.location ='Lat: ${position.latitude} , Long: ${position.longitude}';
+                      GetAddressFromLatLong(position);
+
+                      Timer(Duration(milliseconds: 2500), () {
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+
+                          return Categories();
+                        },));
+
+                      });
+                    }, child: Text('Get Location'),
+                    ),
 
 
-          Text('Coordinates Points',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-          SizedBox(height: 10,),
-          Text(GlobalLocation.location,style: TextStyle(color: Colors.black,fontSize: 16),),
-          SizedBox(height: 10,),
-          Text('ADDRESS',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-          SizedBox(height: 10,),
-          Text('${GlobalLocation.Address}'),
-        ElevatedButton(
-          onPressed: () async {
-            Position position = await _getGeoLocationPosition();
-            GlobalLocation.location = 'Lat: ${position.latitude}, Long: ${position.longitude}';
-            GetAddressFromLatLong(position);
+                    SizedBox(height: 20,),
 
-            // Call the method to send location data to the backend API
-            sendLocationData(GlobalLocation.location);
-
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return Category();
-            }));
-          },
-          child: Text('Get Location'),
-        ),
-        //ElevatedButton(
-                  //     onPressed: () {
-                  //       Navigator.of(context).push(
-                  //         MaterialPageRoute(
-                  //           builder: (_) => LocationFetch()
-                  //         ),
-                  //       );
-                  //     },
-                  //     child: Text(
-                  //       'I will enter my location manually',
-                  //       style: TextStyle(
-                  //           fontWeight: FontWeight.bold, color: Colors.black),
-                  //     ))
-
-              ]),
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       Navigator.of(context).push(
+                    //         MaterialPageRoute(
+                    //           builder: (_) => categories(),
+                    //         ),
+                    //       );
+                    //     },
+                    //     child: Text(
+                    //       'I will enter my location manually',
+                    //       style: TextStyle(
+                    //           fontWeight: FontWeight.bold, color: Colors.black),
+                    //     ))
+                  ],
+                ),
+              ),
             )
           ],
         ),

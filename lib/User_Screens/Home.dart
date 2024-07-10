@@ -1,31 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:we_workers/User_Screens/AllServices.dart';
-import 'package:we_workers/User_Screens/CartPage.dart';
+import 'package:we_workers/User_Screens/MyCart.dart';
 import 'GlobalClass.dart';
-import 'MyCart.dart';
-import '../Screens/UserNotifications.dart';
-import '../Screens/UserProfileAtHome.dart';
-import 'FullHomeCleaning.dart';
 import 'UserNotifications.dart';
 import 'UserProfileAtHome.dart';
-// import 'Home.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: categories(),
+  runApp(const MaterialApp(
+    home: Categories(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
-class categories extends StatefulWidget {
-  const categories({super.key});
+class Categories extends StatefulWidget {
+  const Categories({super.key});
 
   @override
-  State<categories> createState() => _categoriesState();
+  State<Categories> createState() => _CategoriesState();
 }
 
-class _categoriesState extends State<categories> {
+class _CategoriesState extends State<Categories> {
   int selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -35,7 +29,7 @@ class _categoriesState extends State<categories> {
         // If "My Cart" tab is clicked
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => CartPage(cartItems: GlobalLocation.AdityacartItems)),
+          MaterialPageRoute(builder: (context) => MyCart(cartItems: GlobalLocation.AdityacartItems)),
         ).then((value) {
           setState(() {
             selectedIndex = 0;

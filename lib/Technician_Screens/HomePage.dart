@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:we_workers/User_Screens/TechnicianLogout.dart';
+import 'package:we_workers/Technician_Screens/Logout.dart';
 
 void main() {
   runApp(MaterialApp(
