@@ -28,9 +28,11 @@ class RegisterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // title: Text('Registration'),
-        title: Text('User Registration Form',style: TextStyle(color: Colors.white),),
+        title: Text(
+          'User Registration Form',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.blueGrey.shade400,
-
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
@@ -152,7 +154,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   height: 200,
                 ),
               ),
-
               TextFormField(
                 controller: _firstNameController,
                 decoration: InputDecoration(
@@ -160,7 +161,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.person,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your First Name:',
                   border: OutlineInputBorder(
@@ -188,7 +188,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.person,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your Last Name:',
                   border: OutlineInputBorder(
@@ -216,7 +215,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.email,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your email:',
                   border: OutlineInputBorder(
@@ -244,7 +242,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.phone,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your Contact number:',
                   border: OutlineInputBorder(
@@ -272,7 +269,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.location_city,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your Address:',
                   border: OutlineInputBorder(
@@ -300,7 +296,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.location_on,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your Pincode:',
                   border: OutlineInputBorder(
@@ -328,7 +323,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.password,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your Password:',
                   border: OutlineInputBorder(
@@ -357,7 +351,6 @@ class _RegisterFormState extends State<RegisterForm> {
                   prefixIcon: Icon(
                     Icons.password,
                     color: Colors.deepPurple,
-
                   ),
                   hintText: 'Enter your Password Again:',
                   border: OutlineInputBorder(

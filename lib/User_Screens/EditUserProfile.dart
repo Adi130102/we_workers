@@ -1,57 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:we_workers/User_Screens/FirstPage.dart';
-import 'package:we_workers/User_Screens/Location.dart';
 import 'Registration.dart';
+import 'Location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 void main() {
   runApp(MaterialApp(
-    home: UserLogin(),
+    home: EditUser(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
-// Define SessionEmail as a global static variable
-const String SessionEmail = "email";
-
-class UserLogin extends StatefulWidget {
-  const UserLogin({Key? key}) : super(key: key);
+class EditUser extends StatefulWidget {
+  const EditUser({Key? key}) : super(key: key);
 
   @override
-  State<UserLogin> createState() => _UserLoginState();
+  State<EditUser> createState() => _EditUserState();
 }
 
-class _UserLoginState extends State<UserLogin> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class _EditUserState extends State<EditUser> {
+  TextEditingController Service_type = TextEditingController();
+  TextEditingController Service_icon = TextEditingController();
+  TextEditingController Service_description = TextEditingController();
+  TextEditingController Service_price = TextEditingController();
+  TextEditingController Service_isActive = TextEditingController();
 
   Future<void> _login() async {
     try {
       final response = await http.get(
-        Uri.parse('https://awesomeworld1301.pythonanywhere.com/userApiGet/'),
+        Uri.parse('https://awesomeworld1301.pythonanywhere.com/ServiceApiGet/'),
       );
 
       if (response.statusCode == 200) {
         List<dynamic> users = jsonDecode(response.body);
 
         bool loggedIn = users.any((user) =>
-        user['email'] == emailController.text &&
-            user['passwords'] == passwordController.text);
+        user['email'] == Service_type.text &&
+            user['passwords'] == Service_icon.text);
 
         if (loggedIn) {
-          var pref = await SharedPreferences.getInstance();
-          // Use SessionEmail here
-          pref.getString(SessionEmail);
-          print("Session success");
-          print(pref.getString(SessionEmail));
-          setState(() {});
-
-          // session_success();
-          Navigator.of(context).pushReplacement(
+          Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => Location(),
+              builder: (_) => FirstPage(),
               // builder: (_) => Location(),
             ),
           );
@@ -99,7 +91,7 @@ class _UserLoginState extends State<UserLogin> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
-                controller: emailController,
+                controller: Service_type,
                 decoration: InputDecoration(
                   label: Text('Email'),
                   prefixIcon: Icon(
@@ -117,7 +109,7 @@ class _UserLoginState extends State<UserLogin> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 obscureText: true,
-                controller: passwordController,
+                controller: Service_icon,
                 decoration: InputDecoration(
                   label: Text('Password'),
                   prefixIcon: Icon(
@@ -135,7 +127,7 @@ class _UserLoginState extends State<UserLogin> {
               onPressed: () async {
                 final SharedPreferences pref =
                 await SharedPreferences.getInstance();
-                pref.setString('email', emailController.text);
+                pref.setString('email', Service_type.text);
                 _login();
                 setState(() {});
               },

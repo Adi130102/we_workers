@@ -177,8 +177,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:we_workers/Technician_Screens/Registration.dart';
 import 'package:we_workers/User_Screens/FirstPage.dart';
-// import 'UserRegistration.dart';
-// import 'UserLocation.dart';
+// import 'Registration.dart';
+// import 'Location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 

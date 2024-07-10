@@ -19,7 +19,8 @@ class AboutUsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About Us'),
+        title: Text('About Us',style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -28,7 +29,7 @@ class AboutUsPage extends StatelessWidget {
             SizedBox(height: 20),
             CircleAvatar(
               radius: 80,
-              backgroundImage: AssetImage('assets/Logo/Logo.jpg'),
+              backgroundImage: AssetImage('assets/Logo/AdityaLogo.png'),
             ),
             SizedBox(height: 20),
             Text(
@@ -61,11 +62,11 @@ class AboutUsPage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(Icons.email),
+              leading: Icon(Icons.email,color: Colors.deepPurple,),
               title: Text('pateladitya130102@gmail.com'),
             ),
             ListTile(
-              leading: Icon(Icons.phone),
+              leading: Icon(Icons.phone,color: Colors.deepPurple,),
               title: Text('+91 9427178733'),
             ),
             SizedBox(height: 20),

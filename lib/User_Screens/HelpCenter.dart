@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HelpSupportPage extends StatelessWidget {
@@ -37,9 +38,11 @@ class HelpSupportPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    '+91 9427178733',
-                    style: TextStyle(fontSize: 18),
+                  Flexible(
+                    child: Text(
+                      '+91 9427178733',
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
                 ],
               ),
@@ -54,9 +57,11 @@ class HelpSupportPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    'pateladitya130102@gmail.com',
-                    style: TextStyle(fontSize: 18),
+                  Flexible(
+                    child: Text(
+                      'pateladitya130102@gmail.com',
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
                 ],
               ),

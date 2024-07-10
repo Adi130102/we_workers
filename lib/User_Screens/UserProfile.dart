@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:we_workers/User_Screens/Aboutus.dart';
-import 'package:we_workers/User_Screens/HelpSupport.dart';
+import 'package:we_workers/User_Screens/EditUserProfile.dart';
+import 'package:we_workers/User_Screens/HelpCenter.dart';
 import 'package:we_workers/User_Screens/Logout.dart';
 import 'package:we_workers/User_Screens/UserAPITrial.dart';
 
@@ -23,7 +25,7 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.deepPurpleAccent,
+          backgroundColor: Colors.deepPurple,
           title: Text(
             "User Profile",
             style: TextStyle(color: Colors.white),
@@ -55,7 +57,7 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                             ),
                           ),
                           Text(""),
-                          Text("We serve better!!")
+                          Text("We serve it Better !!")
                         ],
                       ),
                     ),
@@ -63,9 +65,9 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
-                          "assets/Adi1.jpg",
-                          height: 70,
-                          width: 70,
+                          "assets/Logo/AdityaLogo.png",
+                          height: 100,
+                          width: 100,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -87,6 +89,21 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) {
 
+                            return EditUser();
+                          },));
+                        },
+                        tileColor: Colors.grey[200],
+                        leading: Icon(
+                          Icons.edit,
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        title: Text("Edit Profile"),
+                        trailing: Icon(Icons.navigate_next),
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) {
+
                             return AboutUsPage();
                           },));
                         },
@@ -98,7 +115,6 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         title: Text("About Us"),
                         trailing: Icon(Icons.navigate_next),
                       ),
-
                       ListTile(
                         onTap: () {
                           Navigator.push(
@@ -115,7 +131,6 @@ class _UserProfileAtHomeState extends State<UserProfileAtHome> {
                         title: Text("Help Center"),
                         trailing: Icon(Icons.navigate_next),
                       ),
-
                       ListTile(
                         onTap: () {
                           Navigator.push(

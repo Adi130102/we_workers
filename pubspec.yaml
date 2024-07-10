@@ -37,6 +37,7 @@ dependencies:
   geolocator: ^11.0.0
   geocoding: ^3.0.0
   file_picker: ^8.0.0+1
+  google_fonts: ^6.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -49,6 +50,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -56,7 +59,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
-
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/Logo/AdityaLogo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -68,37 +74,6 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  #  assets:
-  #    - assets/Adi1.jpg
-  #    - assets/Adi2.jpg
-  #    - assets/off.jpg
-  #    - assets/electricone.jpg
-  #    - assets/expertcleaningtwo.jpg
-  #    - assets/premiumone.jpg
-  #    - assets/premiumtwo.jpg
-  #    - assets/premiumthree.jpg
-  #    - assets/Expertcleaning.png
-  #    - assets/BathroomCategory.jpg
-  #    - assets/SofaCategory.jpg
-  #    - assets/Wiring.jpg
-  #    - assets/ElectricInstallation.jpg
-  #    - assets/Repairing.jpg
-  #    - assets/ManualCleaning.jpg
-  #    - assets/DryClean.jpg
-  #    - assets/MachineWashing.jpg
-  #    - assets/PlumbingPipelines.jpg
-  #    - assets/PlumbingInstallationw.jpg
-  #    - assets/PlubmingRepairs.jpg
-  #    - assets/FullHomeCleaning.jpg
-  #    - assets/ClassicFullHomeCleaning.jpeg
-  #    - assets/PremiumFullHomeCleaning.jpg
-  #    - assets/PlatinumFullHomeCleaning.jpg
-  #    - assets/discount.jpg
-  #    - assets/images/Location.jpg
-  #    - assets/images/Payment.jpg
-  #    - assets/images/Registration.jpg
-  #    - assets/images/tech.jpg
-  #    - assets/images/User.png
   assets:
     - assets/Adi1.jpg
     - assets/Adi2.jpg
@@ -130,9 +105,11 @@ flutter:
     - assets/images/Registration.jpg
     - assets/images/tech.jpg
     - assets/Logo/Logo.jpg
+    - assets/Logo/AdityaLogo.png
     - assets/images/First_Page_Workers.jpg
     - assets/images/User.png
     - assets/HelpSupport.png
+    - assets/Cart.jpg
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

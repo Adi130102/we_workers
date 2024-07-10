@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'UserPayment.dart';
+import 'package:we_workers/User_Screens/AllServices.dart';
+import 'Payment.dart';
 
 class MyCart extends StatefulWidget {
   final List<dynamic> cartItems;
@@ -18,21 +18,42 @@ class _MyCartState extends State<MyCart> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart',style: TextStyle(color: Colors.white),),
+        title: Text(
+          'My Cart',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.deepPurple,
       ),
-      body: Column(
+      body: widget.cartItems.isEmpty
+          ? Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/Cart.jpg",width: 200,),
+            SizedBox(height: 20,),
+            Text(
+              'Your Cart is Empty',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return AllServices();
+              },)).then((value) => setState(() {}));
+            }, child: Text("Add Item to Cart")),
+          ],
+        ),
+      )
+          : Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: widget.cartItems.length + 1,
+              itemCount: widget.cartItems.length,
               itemBuilder: (context, index) {
-                if (index < widget.cartItems.length) {
-                  return _buildCartItem(widget.cartItems[index]);
-                } else {
-                  return _buildPaymentButton();
-                }
+                return _buildCartItem(widget.cartItems[index]);
               },
             ),
           ),
@@ -58,6 +79,7 @@ class _MyCartState extends State<MyCart> {
               ],
             ),
           ),
+          _buildPaymentButton(),
         ],
       ),
     );
@@ -76,7 +98,7 @@ class _MyCartState extends State<MyCart> {
         title: Text(item['Service_type']),
         subtitle: Text('Price: ${item['Service_price']}'),
         trailing: IconButton(
-          icon: Icon(Icons.delete),
+          icon: Icon(Icons.delete,color: Colors.deepPurple,),
           onPressed: () {
             _removeItem(item);
           },
@@ -89,9 +111,14 @@ class _MyCartState extends State<MyCart> {
     return ListTile(
       title: ElevatedButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-             return PaymentUser();
-          },));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return PaymentUser();
+              },
+            ),
+          );
         },
         child: Text('Proceed to Payment'),
       ),

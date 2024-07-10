@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:we_workers/User_Screens/AllServices.dart';
 import 'package:we_workers/User_Screens/MyCart.dart';
 import 'GlobalClass.dart';
-import 'UserNotifications.dart';
-import 'UserProfileAtHome.dart';
+import 'Notifications.dart';
+import 'UserProfile.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -29,7 +29,9 @@ class _CategoriesState extends State<Categories> {
         // If "My Cart" tab is clicked
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MyCart(cartItems: GlobalLocation.AdityacartItems)),
+          MaterialPageRoute(
+              builder: (context) =>
+                  MyCart(cartItems: GlobalLocation.AdityacartItems)),
         ).then((value) {
           setState(() {
             selectedIndex = 0;
@@ -96,12 +98,20 @@ class _CategoriesState extends State<Categories> {
                 Container(
                   child: Row(
                     children: [
-                      Icon(Icons.location_on_outlined,size: 40,color: Colors.deepPurple,),
-                      SizedBox(width: 10,),
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 40,
+                        color: Colors.deepPurple,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Flexible(
-                        child: Text( GlobalLocation.Address,
-                            style:
-                            TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.deepPurple)),
+                        child: Text(GlobalLocation.Address,
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.deepPurple)),
                       ),
                     ],
                   ),
@@ -154,6 +164,17 @@ class _CategoriesState extends State<Categories> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    showDialog(context: context, builder: (context) {
+                      return AlertDialog(
+                        title: Text("Voucher Applied"),
+                        content: Text("The voucher will be applied at the cart."),
+                        actions: [
+                          TextButton(onPressed: (){
+                            Navigator.of(context).pop();
+                          }, child: Text("Ok"))
+                        ],
+                      );
+                    },);
                     print("Hurrey ! You will get 30% OFF ");
                   },
                   child: Container(
@@ -189,7 +210,6 @@ class _CategoriesState extends State<Categories> {
                             margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
                             child: Image.asset(
                               "assets/off.jpg",
-                              // fit: BoxFit.cover,
                               width: 100,
                               fit: BoxFit.fitWidth,
                               alignment: Alignment.center,
@@ -200,6 +220,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                   ),
                 ),
+
                 SizedBox(
                   height: 20,
                 ),
@@ -217,7 +238,7 @@ class _CategoriesState extends State<Categories> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CategoriesAll(),
+                                builder: (context) => AllServices(),
                               ));
                           // print("You are viewing more");
                         },
@@ -246,12 +267,18 @@ class _CategoriesState extends State<Categories> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CategoriesAll(),
+                                builder: (context) => AllServices(),
                               ));
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
-                          child: Text("All Services",style: TextStyle(fontSize: 20,),textAlign: TextAlign.center,),
+                          child: Text(
+                            "All Services",
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                           width: double.maxFinite,
                           height: 40,
                         ),
@@ -281,7 +308,7 @@ class _CategoriesState extends State<Categories> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CategoriesAll(),
+                                  builder: (context) => AllServices(),
                                 ));
                             // print("You are Viewing more Featured Products");
                           },
@@ -303,7 +330,7 @@ class _CategoriesState extends State<Categories> {
                   height: 20,
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -317,7 +344,7 @@ class _CategoriesState extends State<Categories> {
                               child:
                                   Image.asset("assets/expertcleaningtwo.jpg"),
                               height: 150,
-                              width: 150,
+                              // width: 50,
                             ),
                             SizedBox(
                               height: 10,
@@ -346,7 +373,7 @@ class _CategoriesState extends State<Categories> {
                             Container(
                               child: Image.asset("assets/electricone.jpg"),
                               height: 150,
-                              width: 150,
+                              // width: 150,
                             ),
                             SizedBox(
                               height: 10,

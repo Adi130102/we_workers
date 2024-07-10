@@ -43,7 +43,7 @@ class CashPaymentConfirmation extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => categories()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Categories()));
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white, backgroundColor: Colors.blue,

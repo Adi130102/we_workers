@@ -4,11 +4,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:we_workers/UserNotifications.dart';
-import 'package:we_workers/User_Screens/UserHome.dart';
+import 'package:we_workers/User_Screens/Home.dart';
 import 'GlobalClass.dart';
-import 'UserHome.dart';
-import 'UserNotifications.dart';
+import 'Notifications.dart';
 
 void main() {
   const MaterialApp(
